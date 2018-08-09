@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestPingGETRoute(t *testing.T) {
+func TestPingGETShouldReturnMessage(t *testing.T) {
 	router := setupRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("GET", "/ping", nil)
@@ -20,7 +20,7 @@ func TestPingGETRoute(t *testing.T) {
 	assert.Equal(t, `{"message":"pong"}`, w.Body.String())
 }
 
-func TestPingPOSTRoute(t *testing.T) {
+func TestPingPOSTShouldReturnSameMessageWhenRequestMessageWithTime(t *testing.T) {
 	router := setupRouter()
 	w := httptest.NewRecorder()
 	message := time.Now().Format("2006-01-02 15:04:05")
